@@ -1,0 +1,7 @@
+{
+  "name": "IsThereAnything",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
