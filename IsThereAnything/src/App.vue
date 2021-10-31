@@ -35,6 +35,7 @@ import { IonApp, IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader,
 import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { archiveOutline, archiveSharp, bookmarkOutline, bookmarkSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { InitDB } from './models/InitDB';
 
 export default defineComponent({
   name: 'App',
@@ -53,6 +54,16 @@ export default defineComponent({
     IonSplitPane,
   },
   setup() {
+    const model = new InitDB;
+    
+    model.initDB()
+        .then((res) => {
+            alert(res.values?.length == 0);
+        })
+        .catch((err) => {
+            alert("Can't connect to database.\n" + err);
+        });
+
     const selectedIndex = ref(0);
     const appPages = [
       {
